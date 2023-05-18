@@ -3,15 +3,20 @@
 //IMPORTS
 const express = require('express');
 const cors = require('cors');
+const notFound = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
 //TODO: get this route working
+// ** Routers **/
 const foodRouter = require('./routes/food');
-const PORT = process.env.PORT || 3002;
+const ingredientRouter = require('./routes/ingredients');
+
 
 //express singleton & needed uses of dependencies
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(foodRouter);
+app.use(ingredientRouter);
 
 //proof of life endpoint
 app.get('/', (req, res, next) => {
@@ -19,10 +24,9 @@ app.get('/', (req, res, next) => {
 });
 
 
-app.get('/ingredients', (req, res, next) => {
-  res.status(200).send('ingredients route is alive!');
-});
-
+//!! These must be last on server 
+app.use('*', notFound); // 404 error handler
+app.use(errorHandler); // catch all 500 error handler
 
 const start = (port) => app.listen(port, () => console.log('server running on', port));
 
