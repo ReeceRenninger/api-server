@@ -8,7 +8,7 @@ const errorHandler = require('./error-handlers/500');
 //TODO: get this route working
 // ** Routers **/
 const foodRouter = require('./routes/food');
-const ingredientRouter = require('./routes/ingredients');
+const ingredientRouter = require('./routes/ingredient');
 
 
 //express singleton & needed uses of dependencies

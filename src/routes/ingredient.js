@@ -6,7 +6,6 @@ const { ingredientsModel } = require('../models/index');
 
 //Create a record //!! WORKING DO NOT TOUCH
 router.post('/ingredients', async (req, res, next) => {
-  console.log('this is the req body from ingredients post:', req.body);
   let newIngredient = await ingredientsModel.create(req.body);
 
   res.status(200).send(newIngredient);
@@ -14,7 +13,7 @@ router.post('/ingredients', async (req, res, next) => {
 
 //Get one record //!! WORKING DO NOT TOUCH
 router.get('/ingredients/:id', async (req, res) => {
-  let singleIngredient = await ingredientsModel.findAll({ where: { id: req.params.id }});
+  let singleIngredient = await ingredientsModel.findByPk(req.params.id);
 
   if(singleIngredient === null) {
     console.log('Ingredient not found!');
