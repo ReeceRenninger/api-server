@@ -14,6 +14,9 @@ Links and Resources
 
 Collaborators
 
+- Keelen and Tony as TAs
+- 
+
 Setup
 
 PORT env is setup, devs can set port to whatever they want
