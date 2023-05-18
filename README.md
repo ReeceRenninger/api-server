@@ -14,8 +14,9 @@ Links and Resources
 
 Collaborators
 
-- Keelen and Tony as TAs
-- 
+- Keelen, Tony, Miguel helped with the GET and PUT functionality.
+- Ryan G and Ike helped with documentation and implementation of PUT for food route.
+- Josh helped with error debugging in terminal.
 
 Setup
 

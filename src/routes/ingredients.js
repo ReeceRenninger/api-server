@@ -24,7 +24,7 @@ router.get('/ingredients/:id', async (req, res) => {
 });
 
 //Get all records //!! WORKING DO NOT TOUCH
-router.get('/ingredients', async (req, res, next) => {
+router.get('/ingredients', async (req, res) => {
   let allIngredients = await ingredientsModel.findAll();
 
   res.status(200).send(allIngredients);
@@ -53,7 +53,6 @@ router.delete('/ingredients/:id', async (req, res) => {
 
   res.status(200).send('ingredient selected was deleted!');
 });
-
 
 
 module.exports = router;
