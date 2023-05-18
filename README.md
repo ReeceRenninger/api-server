@@ -10,7 +10,7 @@ Links and Resources
 
   [GitHub Actions ci/cd](https://github.com/ReeceRenninger/api-server)
 
-  [back-end server url](https://basic-api-server-zdnm.onrender.com)
+  [back-end server url](https://api-gress.onrender.com)
 
 Collaborators
 
