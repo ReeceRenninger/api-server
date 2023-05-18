@@ -15,8 +15,8 @@ router.post('/food', async (req, res) => {
 
 //Get one record //!! WORKING DO NOT TOUCH
 router.get('/food/:id', async (req, res) => {
-  let singleFoodItem = await foodModel.findAll({ where: { id: req.params.id } }); // find entry by primary key provided
-
+  let singleFoodItem = await foodModel.findAll({ where: { id: req.params.id } });
+  
   if (singleFoodItem === null) {
     console.log('Food item not found!');
   } else {

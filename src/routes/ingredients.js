@@ -12,9 +12,9 @@ router.post('/ingredients', async (req, res, next) => {
   res.status(200).send(newIngredient);
 });
 
-//Get one record //TODO: Not working still
+//Get one record //!! WORKING DO NOT TOUCH
 router.get('/ingredients/:id', async (req, res) => {
-  let singleIngredient = await ingredientsModel.findAll({ where: { id: req.params }});
+  let singleIngredient = await ingredientsModel.findAll({ where: { id: req.params.id }});
 
   if(singleIngredient === null) {
     console.log('Ingredient not found!');
@@ -24,26 +24,26 @@ router.get('/ingredients/:id', async (req, res) => {
 });
 
 //Get all records //!! WORKING DO NOT TOUCH
-router.get('/ingredients', async (req, res, next) => {
+router.get('/ingredients', async (req, res) => {
   let allIngredients = await ingredientsModel.findAll();
 
   res.status(200).send(allIngredients);
 });
 
 
-//update a record //TODO: Not working still
-router.put('./ingredients/:id', async (req, res) => {
+//update a record //!! WORKING DO NOT TOUCH
+router.put('/ingredients/:id', async (req, res) => {
   await ingredientsModel.update(req.body, {
     where : {
       id: req.params.id,
     },
   });
-  let updatedIngredient = await ingredientsModel.finalAll({ where: { id: req.params.id }});
+  let updatedIngredient = await ingredientsModel.findAll({ where: { id: req.params.id }});
   res.status(200).send(updatedIngredient);
 });
 
-//Delete one item //TODO: Not working still
-router.delete('ingredients/:id', async (req, res) => {
+//Delete one item //!! WORKING DO NOT TOUCH
+router.delete('/ingredients/:id', async (req, res) => {
   let id = parseInt(req.params.id);
   await ingredientsModel.destroy({
     where: {
@@ -53,7 +53,6 @@ router.delete('ingredients/:id', async (req, res) => {
 
   res.status(200).send('ingredient selected was deleted!');
 });
-
 
 
 module.exports = router;
