@@ -1,10 +1,10 @@
 'use strict';
 
-const express = require('express')
+const express = require('express');
 const router = express.Router();
-const { ingredientsModel } = require('../models/ingredients');
+const { ingredientsModel } = require('../models/index');
 
-
+//Create a record //!! WORKING DO NOT TOUCH
 router.post('/ingredients', async (req, res, next) => {
   console.log('this is the req body from ingredients post:', req.body);
   let newIngredient = await ingredientsModel.create(req.body);
@@ -12,12 +12,47 @@ router.post('/ingredients', async (req, res, next) => {
   res.status(200).send(newIngredient);
 });
 
+//Get one record //TODO: Not working still
+router.get('/ingredients/:id', async (req, res) => {
+  let singleIngredient = await ingredientsModel.findAll({ where: { id: req.params }});
 
-router.get('/ingredients', (req, res, next) => {
-
-  res.status(200).send('ingredients route is alive!');
+  if(singleIngredient === null) {
+    console.log('Ingredient not found!');
+  } else {
+    res.status(200).send(singleIngredient);
+  }
 });
 
+//Get all records //!! WORKING DO NOT TOUCH
+router.get('/ingredients', async (req, res, next) => {
+  let allIngredients = await ingredientsModel.findAll();
+
+  res.status(200).send(allIngredients);
+});
+
+
+//update a record //TODO: Not working still
+router.put('./ingredients/:id', async (req, res) => {
+  await ingredientsModel.update(req.body, {
+    where : {
+      id: req.params.id,
+    },
+  });
+  let updatedIngredient = await ingredientsModel.finalAll({ where: { id: req.params.id }});
+  res.status(200).send(updatedIngredient);
+});
+
+//Delete one item //TODO: Not working still
+router.delete('ingredients/:id', async (req, res) => {
+  let id = parseInt(req.params.id);
+  await ingredientsModel.destroy({
+    where: {
+      id,
+    },
+  });
+
+  res.status(200).send('ingredient selected was deleted!');
+});
 
 
 

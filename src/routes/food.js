@@ -15,7 +15,7 @@ router.post('/food', async (req, res) => {
 
 //Get one record //!! WORKING DO NOT TOUCH
 router.get('/food/:id', async (req, res) => {
-  let singleFoodItem = await foodModel.findAll({ where: {id: req.params.id }}); // find entry by primary key provided
+  let singleFoodItem = await foodModel.findAll({ where: { id: req.params.id } }); // find entry by primary key provided
 
   if (singleFoodItem === null) {
     console.log('Food item not found!');
@@ -27,23 +27,32 @@ router.get('/food/:id', async (req, res) => {
 //Get all records //!! WORKING DO NOT TOUCH
 router.get('/food', async (req, res) => {
   let allFoodItems = await foodModel.findAll();
-  console.log(allFoodItems);
+  
   res.status(200).send(allFoodItems);
 });
 
-//Update a record
-// router.put()
+//!! Ryan helped here for documentation purposes
+//Update a record //!! WORKING DO NOT TOUCH
+router.put('/food/:id', async (req, res) => {
+  await foodModel.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  });
+  let updatedFoodItem = await foodModel.findAll({ where: { id: req.params.id } });
+  res.status(200).send(updatedFoodItem);
+});
 
-//Delete is working but throwing an error and crashing server
+//Delete is working but throwing an error and crashing server //!! WORKING DO NOT TOUCH
 router.delete('/food/:id', async (req, res) => {
   let id = parseInt(req.params.id);
-  let deleteOneFoodItem = await foodModel.destroy({
+  await foodModel.destroy({
     where: {
       id,
     },
   });
 
-  res.status(200).send(deleteOneFoodItem);
+  res.status(200).send('food item selected was deleted!'); //!! DO NOT SEND VARIABLE WITH ID, DOES NOT WORK BECAUSE WHEN IT TRIES TO SEND ITS ALREADY GONE 
 });
 
 module.exports = router;
