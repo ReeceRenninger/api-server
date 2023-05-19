@@ -16,7 +16,7 @@ const sequelizeDatabase = new Sequelize(DATABASE_URL);
 const foodModel = food(sequelizeDatabase, DataTypes);
 const ingredientsModel  = ingredients(sequelizeDatabase, DataTypes);
 
-//associations
+//associations //!! THIS IS BREAKING MY INGREDIENTS PATHS DUE TO ASSOCIATION MISSING A FOODID COLUMN
 foodModel.hasMany(ingredientsModel);
 ingredientsModel.belongsTo(foodModel);
 

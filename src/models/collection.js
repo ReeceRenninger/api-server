@@ -18,12 +18,17 @@ class Collection {
   }
 
   //!! WORKING DO NOT TOUCH
-  async read(id=null){
+  async read(id=null, options=null){
     try {
       if(id){
         const findOneRecord = await this.model.findByPk(id);
         return findOneRecord;
-      }else {
+
+      } else if (options){
+        let allRecords = await this.model.findAll(options);
+        return allRecords;
+
+      } else {
         const findAllRecords = await this.model.findAll();
         return findAllRecords;
       }
