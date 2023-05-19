@@ -7,14 +7,14 @@ const { food, ingredients } = require('../models/index');
 
 //get food items connected with ingredients table
 router.get('/foodWithIngredients', async (req, res, next) => {
-  let foodItems = await food.findAll({ include: { model: ingredients } });
+  let foodItems = await food.read({ include: { model: ingredients } });
 
   res.status(200).send(foodItems);
 });
 
 //get single food items connected with ingredients table
-router.get('/foodWithSingleIngredients', async (req, res, next) => {
-  let foodItems = await food.findAll({
+router.get('/foodWithSingleIngredients/:id', async (req, res, next) => {
+  let foodItems = await food.read({
     include: { model: ingredients },
     where: { id: req.params.id },
   });
