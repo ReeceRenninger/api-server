@@ -16,8 +16,10 @@ Links and Resources
 Collaborators
 
 - Keelen, Tony, Miguel helped with the GET and PUT functionality.
-- Ryan G and Ike helped with documentation and implementation of PUT for food route, Ryan G also helped with my collection issues with updating.
+- Ryan G and Ike helped with documentation and implementation of PUT for food route.
+- Ryan G also helped with my collection issues with updating along with association issues for grabbing all.
 - Josh helped with error debugging in terminal.
+- Stephen and Daniel helped with SQL DB commands not operating as they should be.
 
 - [My PR to Mike P Repo for Review](https://github.com/catdude2000/api-server/pull/2)
 - Mike and I talked through my code and he suggested changes/ comments, ACP process was not working so we shared screen.

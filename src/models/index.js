@@ -7,7 +7,7 @@ const Collection = require('./collection');
 
 // will make dynamic for testing environment
 // double colon may be a bug, may need to delete if issues persist
-const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory:': process.env.DATABASE_URL;
+const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite:memory:': process.env.DATABASE_URL;
 
 // database singleton, creates the connection
 const sequelizeDatabase = new Sequelize(DATABASE_URL);
@@ -16,7 +16,7 @@ const sequelizeDatabase = new Sequelize(DATABASE_URL);
 const foodModel = food(sequelizeDatabase, DataTypes);
 const ingredientsModel  = ingredients(sequelizeDatabase, DataTypes);
 
-//associations
+//associations //!! THIS IS BREAKING MY INGREDIENTS PATHS DUE TO ASSOCIATION MISSING A FOODID COLUMN
 foodModel.hasMany(ingredientsModel);
 ingredientsModel.belongsTo(foodModel);
 

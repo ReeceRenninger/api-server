@@ -5,11 +5,10 @@ const express = require('express');
 const cors = require('cors');
 const notFound = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
-//TODO: get this route working
 // ** Routers **/
 const foodRouter = require('./routes/food');
+//TODO: get this route working
 const ingredientRouter = require('./routes/ingredient');
-
 
 //express singleton & needed uses of dependencies
 const app = express();
@@ -19,10 +18,9 @@ app.use(foodRouter);
 app.use(ingredientRouter);
 
 //proof of life endpoint
-app.get('/', (req, res, next) => {
-  res.status(200).send('I AM ALIVE!');
-});
-
+// app.get('/', (req, res, next) => {
+//   res.status(200).send('I AM ALIVE!');
+// });
 
 //!! These must be last on server 
 app.use('*', notFound); // 404 error handler

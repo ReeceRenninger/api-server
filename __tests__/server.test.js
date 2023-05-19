@@ -28,7 +28,15 @@ describe('Server', () => {
   });
 
   test('handles food router', async () => {
-    const response = (await request.post('/food')).setEncoding({ name: 'test', category: 'test'});
+    const response = await request.get('/food');
+
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('test');
+    expect(response.body.category).toEqual('test');
+  });
+
+  test('handle ingredient router', async () => {
+    const response = await request.get('/ingredients');
 
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('test');
