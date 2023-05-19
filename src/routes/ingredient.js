@@ -11,6 +11,13 @@ router.post('/ingredients', async (req, res, next) => {
   res.status(200).send(newIngredient);
 });
 
+//Get all records //!! WORKING DO NOT TOUCH
+router.get('/ingredients', async (req, res) => {
+  let allIngredients = await ingredients.read();
+
+  res.status(200).send(allIngredients);
+});
+
 //Get one record //!! WORKING DO NOT TOUCH
 router.get('/ingredients/:id', async (req, res) => {
   let singleIngredient = await ingredients.read(req.params.id);
@@ -22,36 +29,21 @@ router.get('/ingredients/:id', async (req, res) => {
   }
 });
 
-//Get all records //!! WORKING DO NOT TOUCH
-router.get('/ingredients', async (req, res) => {
-  let allIngredients = await ingredients.read();
-
-  res.status(200).send(allIngredients);
-});
 
 
 //update a record //!! WORKING DO NOT TOUCH
 router.put('/ingredients/:id', async (req, res) => {
-  await ingredients.update(req.body, {
-    where : {
-      id: req.params.id,
-    },
-  });
-  let updatedIngredient = await ingredients.findAll({ where: { id: req.params.id }});
+  let updatedIngredient = await ingredients.update(req.body, req.params.id);
+
   res.status(200).send(updatedIngredient);
 });
 
 //Delete one item //!! WORKING DO NOT TOUCH
 router.delete('/ingredients/:id', async (req, res, next) => {
   try {
-    await ingredients.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    await ingredients.destroy({where: {id: req.params.id}});
   
     res.status(200).send('ingredient selected was deleted!');
-    
   } catch (error) {
     next(error);
   }

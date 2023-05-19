@@ -5,22 +5,6 @@ const router = express.Router();
 const { food, ingredients } = require('../models/index');
 
 
-
-//Create a record //!! WORKING DO NOT TOUCH
-router.post('/food', async (req, res) => {
-  console.log('this is the req body from post function', req.body);
-  let newFood = await food.create(req.body);
-
-  res.status(200).send(newFood);
-});
-
-//Get all records //!! WORKING DO NOT TOUCH
-router.get('/food', async (req, res) => {
-  let allFoodItems = await food.read();
-
-  res.status(200).send(allFoodItems);
-});
-
 //get food items connected with ingredients table
 router.get('/foodWithIngredients', async (req, res, next) => {
   let foodItems = await food.findAll({ include: { model: ingredients } });
@@ -37,6 +21,21 @@ router.get('/foodWithSingleIngredients', async (req, res, next) => {
 
   res.status(200).send(foodItems);
 });
+
+//Create a record //!! WORKING DO NOT TOUCH
+router.post('/food', async (req, res) => {
+  let newFood = await food.create(req.body);
+
+  res.status(200).send(newFood);
+});
+
+//Get all records //!! WORKING DO NOT TOUCH
+router.get('/food', async (req, res) => {
+  let allFoodItems = await food.read();
+
+  res.status(200).send(allFoodItems);
+});
+
 
 //Get one record //!! WORKING DO NOT TOUCH
 router.get('/food/:id', async (req, res) => {
