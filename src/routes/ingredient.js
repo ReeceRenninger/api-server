@@ -44,10 +44,9 @@ router.put('/ingredients/:id', async (req, res) => {
 //Delete one item //!! WORKING DO NOT TOUCH
 router.delete('/ingredients/:id', async (req, res, next) => {
   try {
-    let id = parseInt(req.params.id);
     await ingredients.destroy({
       where: {
-        id,
+        id: req.params.id,
       },
     });
   

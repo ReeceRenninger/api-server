@@ -18,6 +18,9 @@ Collaborators
 - Ryan G and Ike helped with documentation and implementation of PUT for food route.
 - Josh helped with error debugging in terminal.
 
+- [My PR to Mike P Repo for Review](https://github.com/catdude2000/api-server/pull/2)
+- Mike and I talked through my code and he suggested changes/ comments, ACP process was not working so we shared screen.
+
 Setup
 
 PORT env is setup, devs can set port to whatever they want
@@ -57,4 +60,10 @@ Tests
 
 UML
 
+- lab 03
+
 ![UML of sql server setup](./assets/basic-sql-server-uml.png)
+
+- lab 04
+
+![UML of Lab 04, Domain Modeling](./assets/lab04-uml.png)
