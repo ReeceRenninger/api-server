@@ -17,12 +17,6 @@ app.use(express.json());
 app.use(foodRouter);
 app.use(ingredientRouter);
 
-//proof of life endpoint
-// app.get('/', (req, res, next) => {
-//   res.status(200).send('I AM ALIVE!');
-// });
-
-//!! These must be last on server 
 app.use('*', notFound); // 404 error handler
 app.use(errorHandler); // catch all 500 error handler
 

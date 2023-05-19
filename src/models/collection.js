@@ -5,7 +5,6 @@ class Collection {
     this.model = model;
   }
 
-  //!! WORKING DO NOT TOUCH
   async create(data){
     try {
       const newRecord = await this.model.create(data);
@@ -17,7 +16,6 @@ class Collection {
     }
   }
 
-  //!! WORKING DO NOT TOUCH
   async read(id=null, options=null){
     try {
       if(id){
@@ -37,8 +35,6 @@ class Collection {
     }
   }
 
-  //!! Ryan helped me format this to be correct
-  //update a record
   async update(data, id) {
     try {
       await this.model.update(data, {where: { id } });
@@ -50,8 +46,6 @@ class Collection {
     }
   }
 
-  //!! WORKING DO NOT TOUCH
-  //Delete a record
   async delete(id){
     try {
       await this.model.destroy({where:{ id }});
@@ -64,6 +58,5 @@ class Collection {
   }
 
 }
-
 
 module.exports = Collection;

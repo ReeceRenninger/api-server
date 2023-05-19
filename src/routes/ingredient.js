@@ -4,21 +4,18 @@ const express = require('express');
 const router = express.Router();
 const { ingredients } = require('../models/index');
 
-//Create a record //!! WORKING DO NOT TOUCH
 router.post('/ingredients', async (req, res, next) => {
   let newIngredient = await ingredients.create(req.body);
 
   res.status(200).send(newIngredient);
 });
 
-//Get all records //!! WORKING DO NOT TOUCH
 router.get('/ingredients', async (req, res) => {
   let allIngredients = await ingredients.read();
 
   res.status(200).send(allIngredients);
 });
 
-//Get one record //!! WORKING DO NOT TOUCH
 router.get('/ingredients/:id', async (req, res) => {
   let singleIngredient = await ingredients.read(req.params.id);
 
@@ -29,15 +26,12 @@ router.get('/ingredients/:id', async (req, res) => {
   }
 });
 
-
-//update a record //!! WORKING DO NOT TOUCH
 router.put('/ingredients/:id', async (req, res) => {
   let updatedIngredient = await ingredients.update(req.body, req.params.id);
 
   res.status(200).send(updatedIngredient);
 });
 
-//Delete one item //!! WORKING DO NOT TOUCH
 router.delete('/ingredients/:id', async (req, res, next) => {
   try {
     await ingredients.destroy({where: {id: req.params.id}});
@@ -47,6 +41,5 @@ router.delete('/ingredients/:id', async (req, res, next) => {
     next(error);
   }
 });
-
 
 module.exports = router;
