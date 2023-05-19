@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = (sequelizeDatabase, DataTypes) => {
+  
   return sequelizeDatabase.define('ingredient', {
     name: {
       type: DataTypes.STRING,
