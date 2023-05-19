@@ -30,7 +30,6 @@ router.get('/ingredients/:id', async (req, res) => {
 });
 
 
-
 //update a record //!! WORKING DO NOT TOUCH
 router.put('/ingredients/:id', async (req, res) => {
   let updatedIngredient = await ingredients.update(req.body, req.params.id);
