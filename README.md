@@ -1,10 +1,11 @@
-LAB - Class 03
-Project: Express Rest API
+# LAB - Class 03 / 04
+
+Project: Express Rest API / Domain Modeling
 Author: Reece Renninger
 
 Problem Domain
 
-- Create an Express API with full CRUD functionality. Utilize Sequelize library on top of all of the previous lab tools.
+- Create an Express API with full CRUD functionality. Utilize Sequelize library on top of all of the previous lab tools. Add in domain modeling with associations and collections functionality.
 
 Links and Resources
 
@@ -15,8 +16,11 @@ Links and Resources
 Collaborators
 
 - Keelen, Tony, Miguel helped with the GET and PUT functionality.
-- Ryan G and Ike helped with documentation and implementation of PUT for food route.
+- Ryan G and Ike helped with documentation and implementation of PUT for food route, Ryan G also helped with my collection issues with updating.
 - Josh helped with error debugging in terminal.
+
+- [My PR to Mike P Repo for Review](https://github.com/catdude2000/api-server/pull/2)
+- Mike and I talked through my code and he suggested changes/ comments, ACP process was not working so we shared screen.
 
 Setup
 
@@ -57,4 +61,10 @@ Tests
 
 UML
 
+- lab 03
+
 ![UML of sql server setup](./assets/basic-sql-server-uml.png)
+
+- lab 04
+
+![UML of Lab 04, Domain Modeling](./assets/lab04-uml.png)
