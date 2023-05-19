@@ -7,38 +7,24 @@ const { food, ingredients } = require('../models/index');
 
 // get food items connected with ingredients table
 router.get('/foodWithIngredients', async (req, res, next) => {
-  //.model had to be added due to the models interacton with each other so one had to be called
+  //.model had to be added due to the models interaction with each other so one had to be called
   let foodItems = await food.read(null, { include: { model: ingredients.model } });
 
   res.status(200).send(foodItems);
 });
 
-//get single food items connected with ingredients table
-router.get('/foodWithSingleIngredients/:id', async (req, res, next) => {
-  let foodItems = await food.read({
-    include: { model: ingredients.model },
-    where: { id: req.params.id },
-  });
-
-  res.status(200).send(foodItems);
-});
-
-//Create a record //!! WORKING DO NOT TOUCH
 router.post('/food', async (req, res) => {
   let newFood = await food.create(req.body);
 
   res.status(200).send(newFood);
 });
 
-//Get all records //!! WORKING DO NOT TOUCH
 router.get('/food', async (req, res) => {
   let allFoodItems = await food.read();
 
   res.status(200).send(allFoodItems);
 });
 
-
-//Get one record //!! WORKING DO NOT TOUCH
 router.get('/food/:id', async (req, res) => {
   let singleFoodItem = await food.read(req.params.id);
 
@@ -49,16 +35,12 @@ router.get('/food/:id', async (req, res) => {
   }
 });
 
-
-//!! Ryan helped here for documentation purposes
-//Update a record //!! WORKING DO NOT TOUCH
 router.put('/food/:id', async (req, res) => {
   let updatedFoodItem = await food.update(req.body, req.params.id );
 
   res.status(200).send(updatedFoodItem);
 });
 
-//!! WORKING DO NOT TOUCH
 router.delete('/food/:id', async (req, res, next) => {
   try {
     await food.delete({ where: {id: req.params.id}});
