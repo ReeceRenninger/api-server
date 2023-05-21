@@ -16,10 +16,9 @@ const sequelizeDatabase = new Sequelize(DATABASE_URL);
 const foodModel = food(sequelizeDatabase, DataTypes);
 const ingredientsModel  = ingredients(sequelizeDatabase, DataTypes);
 
-//associations //!! THIS IS BREAKING MY INGREDIENTS PATHS DUE TO ASSOCIATION MISSING A FOODID COLUMN
+//associations
 foodModel.hasMany(ingredientsModel);
 ingredientsModel.belongsTo(foodModel);
-
 
 //exporting our singleton of sequelizeDB and our foodModel
 module.exports = {

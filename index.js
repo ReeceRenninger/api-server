@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const { sequelizeDatabase } = require('./src/models/index'); // can leave off index since it defaults to it if we wanted
+const { sequelizeDatabase } = require('./src/models/index');
 const { start } = require('./src/server');
 
 const PORT = process.env.PORT;

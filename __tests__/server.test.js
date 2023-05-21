@@ -34,8 +34,6 @@ describe('Server', () => {
     expect(response.status).toEqual(200);
     expect(response.body.name).toEqual('Test');
     expect(response.body.category).toEqual('fruit');
-    
-   
   });
   
   test('handle ingredient router', async () => {
